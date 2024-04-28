@@ -13,7 +13,7 @@ module Yookassa
       @http = HTTP.headers(accept: "application/json")
 
       if shop_id && api_key
-        @http.basic_auth(user: shop_id, pass: api_key)
+        @http = @http.basic_auth(user: shop_id, pass: api_key)
       elsif oauth_token
         @http.headers("Authorization" => "Bearer #{oauth_token}")
       else
